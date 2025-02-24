@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Communication Assessment</h1>
+
+    <div>
+        <h2>Listening & Speaking</h2>
+        <p id="sentence" style="display: none;"></p>
+        <button id="playSentence" onclick="playSentence()">Play Sentence</button>
+        <button id="startRecord" onclick="startRecording()">Start Recording</button>
+        <button id="stopRecord" onclick="stopRecording()" style="display: none;">Stop Recording</button>
+        <button id="nextSentence" onclick="nextSentence()" style="display: none;">Next Sentence</button>
+        <button id="submitTest" onclick="submitTest()" style="display: none;">Submit Test</button>
+
+        <p><strong>Your Speech:</strong> <span id="spoken-text"></span></p>
+        <p><strong>Similarity:</strong> <span id="similarity"></span>%</p>
+    </div>
+
+    <script type="application/json" id="sentences-data">{{ sentences | tojson | safe }}</script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Test Completed</h1>
+    <h2>Your Overall Score: {{ overall_score|round(2) }}%</h2>
+
+    <h3>Sentence-wise Scores:</h3>
+    <ul>
+        {% for score in scores %}
+        <li>Sentence {{ loop.index }}: {{ score|round(2) }}%</li>
+        {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Go to Home</button>
+</body>
+</html>
