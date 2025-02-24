@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Reading Assessment</h1>
+
+    <p id="reading-sentence"></p>
+    <button id="startRecord" onclick="startRecording('reading')">Start Reading</button>
+    <button id="stopRecord" onclick="stopRecording()" style="display:none;">Stop Recording</button>
+    <button id="submitReading" onclick="submitReading()" style="display: none;">Submit Reading</button>
+
+    <p><strong>Your Speech:</strong> <span id="reading-text"></span></p>
+    <p><strong>Similarity:</strong> <span id="reading-similarity"></span>%</p>
+
+    <script type="application/json" id="reading-data">{{ readers | tojson | safe }}</script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

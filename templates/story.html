@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story-Based Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Story-Based Questions</h1>
+
+    <button onclick="playStory()">Listen to Story</button>
+    <div id="questions-container"></div>
+    <button id="submitStory" onclick="submitStory()" style="display:none;">Submit Test</button>
+    
+    <script type="application/json" id="questions-data">{{ questions | tojson | safe }}</script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
