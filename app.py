@@ -133,38 +133,6 @@ def process_speech():
 
     return jsonify({"spoken_text": spoken_text, "similarity": similarity})
 
-
-"""
-@app.route('/process_speech', methods=['POST'])
-def process_speech():
-    file = request.files['audio']
-    sentence = request.form.get('sentence', 'unknown')
-    module = request.form.get('module', 'speaking')  # Default to speaking module
-
-    safe_sentence = re.sub(r'\W+', '_', sentence)
-    input_filename = os.path.join(UPLOAD_FOLDER, f"{safe_sentence}.webm")
-    output_filename = input_filename.replace(".webm", ".wav")
-
-    file.save(input_filename)
-
-    # Convert WebM to WAV
-    wav_file = convert_to_wav(input_filename, output_filename)
-    if not wav_file:
-        return jsonify({"error": "Failed to convert audio"}), 500
-
-    spoken_text = speech_to_text(wav_file)
-    similarity = calculate_similarity(sentence, spoken_text)
-
-    # Store scores based on module
-    if module in user_scores:
-        user_scores[module].append(similarity)
-
-    # Delete processed files
-    os.remove(input_filename)
-    os.remove(output_filename)
-
-    return jsonify({"spoken_text": spoken_text, "similarity": similarity})
-"""
 @app.route('/speak_story', methods=['POST'])
 def speak_story():
     audio_path = text_to_speech(story, "static/story.mp3")
@@ -202,5 +170,5 @@ def submit_test():
     return render_template('result.html', overall_score=overall_score, scores=all_scores)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
